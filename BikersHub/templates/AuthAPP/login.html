@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Login Page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 style="text-align:center;">Login Page</h1><br>
+  <form method="post" style="width:50%; margin:auto;">
+    {% if messages %}
+      {% for msg in messages %}
+        <p class="alert alert-{{msg.tags}}"> {{ msg }} </p>
+      {% endfor %}
+    {% endif %}
+    {% csrf_token %}
+    <label for="username">Username</label><br>
+    <input type="text" name="username" id="username" placeholder="Username" required class="form-control"><br><br>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" id="password" placeholder="Password" required class="form-control"><br>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+{% endblock %}

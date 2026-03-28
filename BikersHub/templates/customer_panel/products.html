@@ -1,0 +1,55 @@
+{% extends "customer_panel/customer_base.html" %}
+
+{% block title %}
+<title>Products</title>
+{% endblock %}
+
+{% block content %}
+
+<section class="container my-5">
+
+  <h2 class="text-center fw-bold mb-5">Our Products</h2>
+
+  <div class="row g-4">
+
+    {% for product in products %}
+
+    <div class="col-md-4 col-lg-3">
+      <div class="card product-card h-100 shadow-sm text-center">
+
+        <!-- IMAGE -->
+        {% if product.product_image %}
+        <img src="{{ product.product_image.url }}"
+             class="card-img-top"
+             style="height:200px; object-fit:cover;">
+        {% else %}
+        <p>No Image</p>
+        {% endif %}
+
+        <!-- BODY -->
+        <div class="card-body">
+
+          <h5 class="card-title">{{ product.product_name }}</h5>
+          <p class="text-muted">₹{{ product.product_price }}</p>
+
+          <!-- Hidden details (show on hover) -->
+          <div class="product-details">
+            <p class="small">{{ product.product_description }}</p>
+            <p class="small">Qty: {{ product.product_qty }}</p>
+          </div>
+          <a href="{% url 'login' %}" class="btn btn-success w-100">
+              Add to Cart
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}

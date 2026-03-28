@@ -1,0 +1,17 @@
+{% extends "admin_panel/admin_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Add Product</title>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align : center;" class="mt-5">Add Product</h1>
+    <br>
+    <form method="post" enctype="multipart/form-data" style="width:50%; margin:auto;">
+      {% csrf_token %}
+        {{form|crispy}}
+      <input type="submit" class="btn btn-primary">
+    </form>
+    <br>
+{% endblock %}
